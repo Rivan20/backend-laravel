@@ -24,8 +24,8 @@ Route::middleware('auth:sanctum')->group(function () {
         ];
     });
     Route::post('user/logout', [UserController::class, 'logout']);
-    Route::apiResource('products', ProductController::class);
 });
 
+Route::apiResource('products', ProductController::class);
 Route::post('user/login', [UserController::class, 'auth']);
 Route::post('user/register', [UserController::class, 'store']);

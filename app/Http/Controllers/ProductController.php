@@ -33,8 +33,18 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
-        return response()->json($products);
+        return response()->json(['data' => $products]);
     }
+
+    public function show($id)
+    {
+        $product = Product::find($id);
+        if (!$product) {
+            return response()->json(['message' => 'Product not found'], 404);
+        }
+        return response()->json(['data' => $product]);
+    }
+
 
     
     public function update(UpdateProductRequest $request, $id)
